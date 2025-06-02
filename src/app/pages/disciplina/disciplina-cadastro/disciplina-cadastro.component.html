@@ -1,0 +1,48 @@
+<div class="flex justify-content-center mt-8">
+  <p-card header="Cadastro de disciplina" style="width: 800px;">
+    
+  <div class="flex justify-content-between mb-4">
+    <button pButton type="button" 
+      class="p-button-raised p-button-rounded"
+      icon="pi pi-caret-left"
+      pTooltip="Voltar"
+      tooltipPosition="top"
+      label="Voltar"
+      routerLink="/disciplinas">
+    </button>
+  </div>
+
+  <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar(form)">
+    <div class="flex flex-column align-items-center gap-3">
+
+      <!-- Campo Descrição -->
+      <div class="w-full md:w-30rem">
+        <label for="descricao">Descrição</label>
+        <input id="descricao" pInputText name="descricao" #descricao="ngModel"
+               [(ngModel)]="disciplina.descricao" type="text" minlength="5" required
+               class="w-full" />
+        <app-message [control]="descricao.control" error="required" text="Informe uma descrição"></app-message>
+        <app-message [control]="descricao.control" error="minlength" text="Mínimo de {{ descricao.errors?.minlength?.requiredLength }} caracteres"></app-message>
+      </div>
+
+      <!-- Switch Status -->
+      <div>
+        <p-inputSwitch [ngModelOptions]="{standalone: true}" binary="true" [(ngModel)]="disciplina.status" name="status"></p-inputSwitch>
+      </div>
+
+      <!-- Botão Salvar -->
+      <div class="col-12 md:col-6 lg:col-3">
+        <button pButton type="submit" icon="pi pi-save" label="Salvar"
+                class="p-button-rounded p-button-success w-full"
+                [disabled]="form.invalid || salvando">
+        </button>
+      </div>
+    </div>
+
+    <!-- Spinner de carregamento -->
+    <div *ngIf="salvando" class="flex flex-column align-items-center mt-4">
+      <p-progressSpinner [style]="{ width: '50px', height: '50px' }" styleClass="custom-spinner" strokeWidth="5" animationDuration=".5s"></p-progressSpinner>
+      <h6 class="mt-2">Salvando, aguarde...</h6>
+    </div>
+  </form>
+</p-card>

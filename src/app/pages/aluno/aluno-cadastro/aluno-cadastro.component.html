@@ -1,0 +1,70 @@
+<div class="flex justify-content-center mt-8">
+  <p-card header="Cadastro de Aluno" style="width: 800px;">
+    
+    <!-- Botão de voltar -->
+    <div class="mb-4">
+      <button 
+        pButton 
+        type="button" 
+        class="p-button p-button-raised p-button-rounded" 
+        icon="pi pi-caret-left" 
+        pTooltip="Voltar" 
+        tooltipPosition="top" 
+        label="Voltar" 
+        routerLink="/alunos">
+      </button>
+    </div>
+
+    <!-- Formulário de cadastro -->
+    <form #form="ngForm" autocomplete="off" (ngSubmit)="salvar()">
+      <div class="p-fluid">
+        
+        <!-- Campo Nome -->
+        <div class="mb-3">
+          <label for="nome" class="block mb-1 font-medium">Nome</label>
+          <input 
+            id="nome"
+            pInputText 
+            name="nome" 
+            #nome="ngModel" 
+            [(ngModel)]="aluno.nome" 
+            required />
+        </div>
+
+        <!-- Campo CPF -->
+        <div class="mb-3">
+          <label for="cpf" class="block mb-1 font-medium">CPF</label>
+          <input 
+            id="cpf"
+            pInputText 
+            name="cpf" 
+            #cpf="ngModel" 
+            [(ngModel)]="aluno.cpf" 
+            required />
+        </div>
+
+        <!-- Campo Status -->
+        <div class="mb-4 flex align-items-center">
+          <p-checkbox 
+            name="status" 
+            [(ngModel)]="aluno.status" 
+            inputId="status">
+          </p-checkbox>
+          <label for="status" class="ml-2">Ativo</label>
+        </div>
+
+        <!-- Botão Salvar -->
+        <div class="text-right">
+          <button 
+            pButton 
+            type="submit" 
+            label="Salvar" 
+            icon="pi pi-save"             
+            class="p-button-rounded p-button-success w-full">
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </p-card>
+</div>

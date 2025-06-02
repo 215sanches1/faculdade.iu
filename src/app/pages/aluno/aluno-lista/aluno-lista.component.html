@@ -1,0 +1,33 @@
+<div class="flex justify-content-center mt-8"></div>
+<p-card header="Lista de Alunos">
+  <div class="flex flex-wrap col-5">
+    <button pButton class="p-button-rounded"  icon="pi pi-plus" routerLink="novo" label="Novo"></button>
+  </div>
+
+  <p-table [value]="alunos" styleClass="p-datatable-striped">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Status</th>
+        <th>Data Criação</th>
+        <th>Usuário Criação</th>
+        <th>Data Alteração</th>
+        <th>Usuário Alteração</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-aluno>
+      <tr>
+        <td>{{ aluno.nome }}</td>
+        <td>{{ aluno.cpf }}</td>
+        <td>{{ aluno.status ? 'Ativo' : 'Inativo' }}</td>
+        <td>{{ aluno.datacriacao | date : 'dd/MM/yyyy' }}</td>
+        <td>{{ aluno.usucriacao }}</td>
+        <td>{{ aluno.dataalteracao | date : 'dd/MM/yyyy' }}</td>
+        <td>{{ aluno.usualteracao }}</td>
+      </tr>
+    </ng-template>
+    
+  </p-table>
+</p-card>

@@ -1,0 +1,47 @@
+<div class="colorNav">
+  <div class="flex justify-content-between flex-wrap">
+    <div class="d-flex align-items-center">
+      <span class="cursor-pointer">
+        <i class="pi pi-bars text-white" (click)="sibebar = true" style="font-size: 1.5rem"></i>
+      </span>
+      <span class="cursor-pointer ml-2">
+        <i class="pi pi-home text-white" style="font-size: 1.5rem" routerLink="/dashboard"></i>
+      </span>
+    </div>
+    <div class="d-flex align-items-center">
+      <i class="pi pi-user cursor-pointer text-white" style="font-size: 1.5rem" (click)="op.toggle($event)"></i>
+     
+    </div>
+  </div>
+</div>
+
+<p-overlayPanel #op>
+  <ng-template pTemplate="content">
+    <div class="col-12">
+      <button pButton class="p-button-rounded p-button-primary" icon="pi pi-lock" label="Alterar Senha"
+        (click)="op.toggle($event)" routerLink="/alterarsenha"></button>
+    </div>
+   
+
+  </ng-template>
+</p-overlayPanel>
+
+<p-sidebar [(visible)]="sibebar" >
+  <div class="flex flex-wrap">
+    <div class="col-12">
+      <p-button styleClass="p-button-rounded text-white w-full text-1xl btn-menu" label="Disciplinas"
+        routerLink="/disciplinas" routerLinkActive="ativo" (click)="sibebar = false"></p-button>
+    </div>
+
+    <div class="col-12">
+      <p-button styleClass="p-button-rounded text-white w-full text-1xl btn-menu" label="Professores"
+        routerLink="/professores" routerLinkActive="ativo" (click)="sibebar = false"></p-button>
+    </div>
+        <div class="col-12">
+      <p-button styleClass="p-button-rounded text-white w-full text-1xl btn-menu" label="Alunos"
+        routerLink="/alunos" routerLinkActive="ativo" (click)="sibebar = false"></p-button>
+    </div>
+    
+                
+  </div>
+</p-sidebar>
